@@ -1,0 +1,17 @@
+﻿<Window x:Class="HERA.UI.VLC.TestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HERA.UI.VLC"
+        mc:Ignorable="d"
+        Title="TestWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="Play" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="PlayClick" Height="36" Width="85"/>
+        <Button Content="Pause" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Click="PauseClick" Height="36" Width="93" />
+        <Button Content="Stop" HorizontalAlignment="Left" Margin="198,10,0,0" VerticalAlignment="Top" Click="StopClick" Height="36" Width="93" />
+        <Button Content="Mute" HorizontalAlignment="Left" Margin="296,10,0,0" VerticalAlignment="Top" Click="MuteClick" Height="36" Width="93" />
+        <Slider HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="183" Minimum="0" Maximum="200" ValueChanged="Slider_ValueChanged"/>
+
+    </Grid>
+</Window>

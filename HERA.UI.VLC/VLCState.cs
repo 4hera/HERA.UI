@@ -10,5 +10,7 @@ namespace HERA.UI.VLC
     {
         public string State { get; set; }
         public int Volume { get; set; }
+
+        public string Path { get; set; }
     }
 }

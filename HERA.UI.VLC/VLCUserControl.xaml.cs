@@ -21,6 +21,7 @@ namespace HERA.UI.VLC
     {
         private LibVLC _libVLC;
         MediaPlayer _mediaPlayer;
+        private string _path;
         public VLCUserControl()
         {
             InitializeComponent();
@@ -34,17 +35,29 @@ namespace HERA.UI.VLC
             };
         }
 
-        public void vlcPlayer_Loaded(object sender, RoutedEventArgs e)
+        public void vlcPlayerLoaded(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("vlc loaded");
-            _libVLC = new LibVLC();
-            _mediaPlayer = new MediaPlayer(_libVLC);
-            vlcPlayer.MediaPlayer = _mediaPlayer;
-            var media = new Media(_libVLC, new Uri("C:\\Users\\AliEmirErcan\\Desktop\\VideoTest\\BasketballVoice.mp4"));
-            _mediaPlayer.Play(media);
+            SetPath("C:\\Users\\AliEmirErcan\\Desktop\\VideoTest\\BasketballVoice.mp4");
+            InitializeVLC();          
             //m _mediaPlayer.TakeSnapshot
             SetAspectRatio((int)ActualWidth, (int)ActualHeight);
             
+        }
+
+        private void InitializeVLC()
+        {
+            _libVLC = new LibVLC();
+            _mediaPlayer = new MediaPlayer(_libVLC);
+            vlcPlayer.MediaPlayer = _mediaPlayer;
+            var media = new Media(_libVLC, new Uri(_path));
+            _mediaPlayer.EnableHardwareDecoding = true;
+            _libVLC.Log += _libVLC_Log;
+            _mediaPlayer.Play(media);
+        }
+
+        private void _libVLC_Log(object? sender, LogEventArgs e)
+        {
+            Console.WriteLine($"Log {e.FormattedLog}");
         }
 
         public void Play()
@@ -100,6 +113,19 @@ namespace HERA.UI.VLC
             }
 
             return true;
+        }
+
+        public void SetPath(string path)
+        {
+            Console.WriteLine("SETPATH");
+            _path = path;
+            if(_mediaPlayer is not null)
+            {
+                _mediaPlayer.Dispose();
+                InitializeVLC();
+            }
+            
+            
         }
 
 

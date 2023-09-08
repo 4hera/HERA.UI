@@ -52,8 +52,10 @@ namespace HERA.UI.VLC
                         VLCMute();
                         break;
                     case "Voice":
-                    default:
                         VLCVoice(vlcEvet.Volume);
+                        break;
+                    case "Path":
+                        VLCPath(vlcEvet.Path);
                         break;
                 }
             };
@@ -83,7 +85,13 @@ namespace HERA.UI.VLC
 
         public void VLCVoice(int volume)
         {
-            vLCUserControl.setVoice(volume);
+            vLCUserControl.SetVolume(volume);
+        }
+
+        public void VLCPath(string path)
+        {
+            Console.WriteLine(path);
+            vLCUserControl.SetPath(path);
         }
 
 

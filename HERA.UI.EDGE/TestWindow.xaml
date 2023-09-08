@@ -1,0 +1,36 @@
+﻿<Window x:Class="HERA.UI.EDGE.TestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HERA.UI.EDGE"
+        mc:Ignorable="d"
+        Title="TestWindow" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="LinkText" HorizontalAlignment="Left" Margin="10,22,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="687" Height="23"/>
+        <Button Content="Open" HorizontalAlignment="Left" Margin="702,22,0,0" VerticalAlignment="Top" Width="88" Height="23" Click="OpenButtonClick"/>
+        <ComboBox x:Name="LinkComboBox" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Width="687"/>
+        <Slider x:Name="ZoomSlider" HorizontalAlignment="Left" Margin="65,91,0,0" VerticalAlignment="Top" Width="383" Minimum="0" Maximum="5"/>
+        <Button Content="LastVisited" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top" Height="33" Width="99" Click="LastVisitedClick"/>
+        <CheckBox x:Name="HideScrollCheckBox" Content="Hide Scroll" HorizontalAlignment="Left" Margin="496,91,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="LocationXTextBox" HorizontalAlignment="Left" Margin="33,188,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="71" Height="45" FontSize="24" PreviewTextInput="NumberValidationTextBox"/>
+        <TextBox x:Name="LocationYTextBox" HorizontalAlignment="Left" Margin="132,188,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="71" Height="45" FontSize="24" PreviewTextInput="NumberValidationTextBox"/>
+        <Button Content="Set Location" HorizontalAlignment="Left" Margin="217,192,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.177,-0.198" Width="108" Height="34" Click="SetLocationClick"/>
+        <Button Content="Last Location" HorizontalAlignment="Left" Margin="116,129,0,0" VerticalAlignment="Top" Height="33" Width="99" Click="LastLocationClick"/>
+        <TextBox x:Name="slTextBox" HorizontalAlignment="Left" Margin="302,251,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="70" Height="45" FontSize="24" PreviewTextInput="NumberValidationTextBox"/>
+        <TextBox x:Name="stTextBox" HorizontalAlignment="Left" Margin="401,250,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="71" Height="45" FontSize="24" PreviewTextInput="NumberValidationTextBox"/>
+        <Button Content="Crop" HorizontalAlignment="Left" Margin="477,255,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.177,-0.198" Width="109" Height="34" Click="CropClick"/>
+        <CheckBox x:Name="CropEnableCheckBox" Content="Crop Enable" HorizontalAlignment="Left" Margin="606,265,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="sxSlider"  Margin="34,281,0,0" Minimum="-10" Maximum="10" HorizontalAlignment="Left" VerticalAlignment="Top" Width="141" ValueChanged="sxSlider_ValueChanged" Value="1"/>
+        <Slider x:Name="sySlider" Margin="34,313,0,0" Minimum="-10" Maximum="10" HorizontalAlignment="Left" VerticalAlignment="Top" Width="141" ValueChanged="sySlider_ValueChanged" Value="1"/>
+        <Label Content="Zoom" Margin="10,86,740,322"/>
+        <Label Content="X" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"/>
+        <Label Content="Y" HorizontalAlignment="Left" Margin="109,199,0,0" VerticalAlignment="Top"/>
+        <Label Content="SX" HorizontalAlignment="Left" Margin="11,278,0,0" VerticalAlignment="Top"/>
+        <Label Content="SY" HorizontalAlignment="Left" Margin="12,309,0,0" VerticalAlignment="Top"/>
+        <Label Content="SL" HorizontalAlignment="Left" Margin="266,262,0,0" VerticalAlignment="Top"/>
+        <Label Content="ST" HorizontalAlignment="Left" Margin="377,263,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="sxLabel" Content="N/A"  HorizontalAlignment="Left" Margin="190,278,0,0" VerticalAlignment="Top" Width="45"/>
+        <Label x:Name="syLabel" Content="N/A" HorizontalAlignment="Left" Margin="191,309,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

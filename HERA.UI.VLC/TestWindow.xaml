@@ -11,7 +11,8 @@
         <Button Content="Pause" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Click="PauseClick" Height="36" Width="93" />
         <Button Content="Stop" HorizontalAlignment="Left" Margin="198,10,0,0" VerticalAlignment="Top" Click="StopClick" Height="36" Width="93" />
         <Button Content="Mute" HorizontalAlignment="Left" Margin="296,10,0,0" VerticalAlignment="Top" Click="MuteClick" Height="36" Width="93" />
-        <Slider HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="183" Minimum="0" Maximum="200" ValueChanged="Slider_ValueChanged"/>
+        <Slider HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="183" Minimum="0" Maximum="200" ValueChanged="Slider_ValueChanged"/>
+        <ComboBox  x:Name="fileComboBox" Margin="428,12,91,375"/>
 
     </Grid>
 </Window>

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HERA.UI.VLC", "HERA.UI.VLC\HERA.UI.VLC.csproj", "{F3374548-1442-475D-8A9C-2C63A69258C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HERA.UI.VLC", "HERA.UI.VLC\HERA.UI.VLC.csproj", "{F3374548-1442-475D-8A9C-2C63A69258C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HERA.UI.EDGE", "HERA.UI.EDGE\HERA.UI.EDGE.csproj", "{0E8B2F40-C190-445A-A0B1-4D92DC4A6CFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F3374548-1442-475D-8A9C-2C63A69258C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3374548-1442-475D-8A9C-2C63A69258C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3374548-1442-475D-8A9C-2C63A69258C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E8B2F40-C190-445A-A0B1-4D92DC4A6CFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E8B2F40-C190-445A-A0B1-4D92DC4A6CFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E8B2F40-C190-445A-A0B1-4D92DC4A6CFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E8B2F40-C190-445A-A0B1-4D92DC4A6CFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

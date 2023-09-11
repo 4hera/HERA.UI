@@ -138,5 +138,65 @@ namespace HERA.UI.VLC
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void ContrastSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (OnEvent is not null)
+            {
+                OnEvent(this, new()
+                {
+                    State = "Contrast",
+                    Value = (float)ContrastSlider.Value
+                }); 
+            }
+        }
+
+        private void BrightnessSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (OnEvent is not null)
+            {
+                OnEvent(this, new()
+                {
+                    State = "Brightness",
+                    Value = (float)BrightnessSlider.Value
+                });
+            }
+        }
+
+        private void HueSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (OnEvent is not null)
+            {
+                OnEvent(this, new()
+                {
+                    State = "Hue",
+                    Value = (float)HueSlider.Value
+                });
+            }
+        }
+
+        private void SaturationSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (OnEvent is not null)
+            {
+                OnEvent(this, new()
+                {
+                    State = "Saturation",
+                    Value = (float)SaturationSlider.Value
+                });
+            }
+        }
+
+        private void GammaSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (OnEvent is not null)
+            {
+                OnEvent(this, new()
+                {
+                    State = "Gamma",
+                    Value = (float)GammaSlider.Value
+                });
+            }
+        }
     }
 }

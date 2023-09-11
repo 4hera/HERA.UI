@@ -82,11 +82,11 @@ namespace HERA.UI.EDGE
         {
             if (zoom <= 0)
             {
-                EdgeWebView.ZoomFactor = 1.0f;
+                EdgeWebView.ZoomFactor = 0;
             }
             else if (zoom > 5)
             {
-                EdgeWebView.ZoomFactor = 1.0f;
+                EdgeWebView.ZoomFactor = 5;
             }
             else
             {

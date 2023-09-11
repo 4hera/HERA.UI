@@ -13,6 +13,16 @@
         <Button Content="Mute" HorizontalAlignment="Left" Margin="296,10,0,0" VerticalAlignment="Top" Click="MuteClick" Height="36" Width="93" />
         <Slider HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="183" Minimum="0" Maximum="200" ValueChanged="Slider_ValueChanged"/>
         <ComboBox  x:Name="fileComboBox" Margin="428,12,91,375"/>
+        <Slider x:Name="ContrastSlider" Value="1"  Minimum="0" Maximum="5" HorizontalAlignment="Left" Margin="10,128,0,0" VerticalAlignment="Top" Width="120" ValueChanged="ContrastSlider_ValueChanged"/>
+        <Label Content="Contrast" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="BrightnessSlider" Value="1" Minimum="0" Maximum="2" HorizontalAlignment="Left" Margin="130,128,0,0" VerticalAlignment="Top" Width="120" ValueChanged="BrightnessSlider_ValueChanged"/>
+        <Label Content="Brightness" HorizontalAlignment="Left" Margin="130,97,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="HueSlider" Value="0" Minimum="-180" Maximum="180" HorizontalAlignment="Left" Margin="251,128,0,0" VerticalAlignment="Top" Width="120" ValueChanged="HueSlider_ValueChanged"/>
+        <Label Content="Hue" HorizontalAlignment="Left" Margin="251,97,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="SaturationSlider" Value="1" Minimum="0" Maximum="3" HorizontalAlignment="Left" Margin="373,128,0,0" VerticalAlignment="Top" Width="120" ValueChanged="SaturationSlider_ValueChanged"/>
+        <Label Content="Saturation" HorizontalAlignment="Center" Margin="0,97,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="GammaSlider" Value="1" Minimum="0.01" Maximum="10" HorizontalAlignment="Left" Margin="497,128,0,0" VerticalAlignment="Top" Width="120" ValueChanged="GammaSlider_ValueChanged"/>
+        <Label Content="Gamma" HorizontalAlignment="Left" Margin="497,97,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

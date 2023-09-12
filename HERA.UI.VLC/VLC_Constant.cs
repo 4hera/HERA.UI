@@ -38,5 +38,34 @@ namespace HERA.UI.VLC
         public static float DEFAULT_GAMMA = 1.0f;
         #endregion
 
+        #region MARQUEE_POSITION
+        public static int MIN_MARQUEE_POSITION = 0;
+        public static int MAX_MARQUEE_POSITION = 8;
+        public static int DEFAULT_MARQUEE_POSITION = 5;
+        #endregion
+
+        #region MARQUEE_OPACITY
+        public static int MIN_MARQUEE_OPACITY = 0;
+        public static int MAX_MARQUEE_OPACITY = 255;
+        public static int DEFAULT_MARQUEE_OPACITY = 255;
+        #endregion
+
+        #region MARQUEE_SIZE
+        public static int MIN_MARQUEE_SIZE = 0;
+        public static int MAX_MARQUEE_SIZE = 4096;
+        public static int DEFAULT_MARQUEE_SIZE = 100;
+        #endregion
+
+        #region MARQUEE_POSITION
+        public static int DEFAULT_MARQUEE_X = 0;
+        public static int DEFAULT_MARQUEE_Y = 0;
+        #endregion
+
+        #region LOGO_OPACITY
+        public static int MIN_LOGO_OPACITY = 0;
+        public static int MAX_LOGO_OPACITY = 255;
+        public static int DEFAULT_LOGO_OPACITY = 255;
+        #endregion
+
     }
 }

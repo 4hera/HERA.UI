@@ -5,24 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HERA.UI.VLC"
         mc:Ignorable="d"
-        Title="TestWindow" Height="450" Width="800">
-    <Grid>
+        Title="TestWindow" Height="535" Width="852">
+    <Grid Height="518" VerticalAlignment="Top">
         <Button Content="Play" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="PlayClick" Height="36" Width="85"/>
         <Button Content="Pause" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Click="PauseClick" Height="36" Width="93" />
         <Button Content="Stop" HorizontalAlignment="Left" Margin="198,10,0,0" VerticalAlignment="Top" Click="StopClick" Height="36" Width="93" />
         <Button Content="Mute" HorizontalAlignment="Left" Margin="296,10,0,0" VerticalAlignment="Top" Click="MuteClick" Height="36" Width="93" />
         <Slider HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="183" Minimum="0" Maximum="200" ValueChanged="Slider_ValueChanged"/>
-        <ComboBox  x:Name="fileComboBox" Margin="428,12,91,375"/>
+
         <Slider x:Name="ContrastSlider" Value="1"  Minimum="0" Maximum="5" HorizontalAlignment="Left" Margin="10,128,0,0" VerticalAlignment="Top" Width="120" ValueChanged="ContrastSlider_ValueChanged"/>
-        <Label Content="Contrast" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top"/>
+        <Label Content="Contrast:" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top"/>
         <Slider x:Name="BrightnessSlider" Value="1" Minimum="0" Maximum="2" HorizontalAlignment="Left" Margin="130,128,0,0" VerticalAlignment="Top" Width="120" ValueChanged="BrightnessSlider_ValueChanged"/>
-        <Label Content="Brightness" HorizontalAlignment="Left" Margin="130,97,0,0" VerticalAlignment="Top"/>
+        <Label Content="Brightness:" HorizontalAlignment="Left" Margin="130,97,0,0" VerticalAlignment="Top"/>
         <Slider x:Name="HueSlider" Value="0" Minimum="-180" Maximum="180" HorizontalAlignment="Left" Margin="251,128,0,0" VerticalAlignment="Top" Width="120" ValueChanged="HueSlider_ValueChanged"/>
         <Label Content="Hue" HorizontalAlignment="Left" Margin="251,97,0,0" VerticalAlignment="Top"/>
         <Slider x:Name="SaturationSlider" Value="1" Minimum="0" Maximum="3" HorizontalAlignment="Left" Margin="373,128,0,0" VerticalAlignment="Top" Width="120" ValueChanged="SaturationSlider_ValueChanged"/>
         <Label Content="Saturation" HorizontalAlignment="Center" Margin="0,97,0,0" VerticalAlignment="Top"/>
         <Slider x:Name="GammaSlider" Value="1" Minimum="0.01" Maximum="10" HorizontalAlignment="Left" Margin="497,128,0,0" VerticalAlignment="Top" Width="120" ValueChanged="GammaSlider_ValueChanged"/>
         <Label Content="Gamma" HorizontalAlignment="Left" Margin="497,97,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="TextOpacitySlider" Value="1"  Minimum="0" Maximum="255" HorizontalAlignment="Left" Margin="17,274,0,0" VerticalAlignment="Top" Width="120" ValueChanged="TextOpacitySlider_ValueChanged"/>
+        <Label Content="Text Opacity" HorizontalAlignment="Left" Margin="17,243,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBox" HorizontalAlignment="Left" Margin="10,195,0,0" TextWrapping="Wrap" Text="Text" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <CheckBox x:Name="MarqueCheckBox" Content="Marquee Enable" HorizontalAlignment="Left" Margin="428,199,0,0" VerticalAlignment="Top" Click="Marquee_Click"/>
+        <ComboBox x:Name="ColorComboBox" HorizontalAlignment="Left" Margin="147,195,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="TextPositionComboBox" HorizontalAlignment="Left" Margin="280,195,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="TextPositionComboBox_SelectionChanged" />
+        <Slider x:Name="TextSizeSlider" Value="0"  Minimum="0" Maximum="1000" HorizontalAlignment="Left" Margin="147,274,0,0" VerticalAlignment="Top" Width="120" ValueChanged="TextSizeSlider_ValueChanged"/>
+        <Label Content="Text Size" HorizontalAlignment="Left" Margin="147,243,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="TextRefreshSlider" Value="1"  Minimum="0" Maximum="200" HorizontalAlignment="Left" Margin="280,275,0,0" VerticalAlignment="Top" Width="120" ValueChanged="TextRefreshSlider_ValueChanged"/>
+        <Label Content="Text Refresh" HorizontalAlignment="Left" Margin="280,244,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="TextXSlider" Value="0"  Minimum="0" Maximum="2000" HorizontalAlignment="Left" Margin="418,275,0,0" VerticalAlignment="Top" Width="120" ValueChanged="TextXSlider_ValueChanged"/>
+        <Label Content="X" HorizontalAlignment="Left" Margin="418,244,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="TextYSlider" Value="0"  Minimum="0" Maximum="2000" HorizontalAlignment="Left" Margin="557,275,0,0" VerticalAlignment="Top" Width="120" ValueChanged="TextYSlider_ValueChanged" />
+        <Label Content="Y" HorizontalAlignment="Left" Margin="557,244,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="ContrastLabel" Content="0" HorizontalAlignment="Left" Margin="67,97,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="BrightnessLabel" Content="0" HorizontalAlignment="Left" Margin="199,97,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="HueLabel" Content="0" HorizontalAlignment="Left" Margin="288,97,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="SaturationLabel" Content="0" HorizontalAlignment="Left" Margin="432,97,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="GammaLabel" Content="0" HorizontalAlignment="Left" Margin="549,97,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="TextOpacityLabel" Content="0" HorizontalAlignment="Left" Margin="93,244,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="TextSizeLabel" Content="0" HorizontalAlignment="Left" Margin="207,244,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="RefreshLabel" Content="0" HorizontalAlignment="Left" Margin="358,244,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="XLabel" Content="0" HorizontalAlignment="Left" Margin="440,244,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="YLabel"  Content="0" HorizontalAlignment="Left" Margin="579,244,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="LogoFilePathComboBox" HorizontalAlignment="Left" Margin="10,339,0,0" VerticalAlignment="Top" Width="120"/>
+        <Slider x:Name="LogoXSlider" HorizontalAlignment="Left" Minimum="0" Maximum="3000" Margin="155,343,0,0" VerticalAlignment="Top" Width="120" ValueChanged="LogoXSlider_ValueChanged"/>
+        <Slider x:Name="LogoYSlider" HorizontalAlignment="Left" Minimum="0" Maximum="3000" Margin="296,343,0,0" VerticalAlignment="Top" Width="120" ValueChanged="LogoYSlider_ValueChanged"/>
+        <ComboBox x:Name="LogoPositionComboBox" HorizontalAlignment="Left" Margin="433,339,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="LogoPositionComboBox_SelectionChanged"/>
+        <Slider x:Name="LogoOpacitySlider" Minimum="0" Maximum="255"  HorizontalAlignment="Left" Margin="579,343,0,0" VerticalAlignment="Top" Width="120" ValueChanged="LogoOpacitySlider_ValueChanged"/>
+        <Label Content="LogoX" HorizontalAlignment="Left" Margin="155,312,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LogoXLabel" Content="0" HorizontalAlignment="Left" Margin="196,312,0,0" VerticalAlignment="Top"/>
+        <Label Content="LogoY" HorizontalAlignment="Left" Margin="299,312,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LogoYLabel"  Content="0" HorizontalAlignment="Left" Margin="340,312,0,0" VerticalAlignment="Top"/>
+        <Label Content="Logo Opacity" HorizontalAlignment="Left" Margin="579,312,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LogoOpacityLabel" Content="0" HorizontalAlignment="Left" Margin="660,312,0,0" VerticalAlignment="Top"/>
+        <ComboBox  x:Name="fileComboBox" HorizontalAlignment="Left" Margin="414,12,0,0" VerticalAlignment="Top" Width="181" Height="34"/>
+        <ComboBox x:Name="AudioOutputsComboBox" HorizontalAlignment="Left" Margin="10,422,0,0" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

@@ -32,9 +32,9 @@ namespace HERA.UI.VLC
 
         private void MainWindowLoaded(object sender, RoutedEventArgs e)
         {
-            testWindow.Show();
+            
             MainGrid.Children.Add(vLCUserControl);
-
+            testWindow.Show();
             testWindow.OnEvent += (vlcSender, vlcEvet) =>
             {
                 switch (vlcEvet.State)
@@ -72,11 +72,54 @@ namespace HERA.UI.VLC
                     case "Gamma":
                         VLCGamma(vlcEvet.Value);
                         break;
+                    case "TextOpacity":
+                        VLCTextOpacity((int)vlcEvet.Value);
+                        break;
+                    case "TextChanged":
+                        VLCSetText(vlcEvet.Text); 
+                        break;
+                    case "Color":
+                        VLCSetTextColor(vlcEvet.Color);
+                        break;
+                    case "TextPosition":
+                        VLCSetTextPosition(vlcEvet.TextPosition); 
+                        break;
+                    case "MarqueEnable":
+                        VLCSetMarqueEnable(vlcEvet.MarqueEnable);
+                        break;
+                    case "TextSize":
+                        VLCSetTextSize(vlcEvet.Volume);
+                        break;
+                    case "TextRefresh":
+                        VLCSetRefresh(vlcEvet.Volume);
+                        break;
+                    case "TextX":
+                        VLCSetX(vlcEvet.Volume);
+                        break;
+                    case "TextY":
+                        VLCSetY(vlcEvet.Volume);
+                        break;
+                    case "SetLogo":
+                        VLCSetLogo(vlcEvet.Path);
+                        break;
+                    case "LogoX":
+                        VLCSetLogoX(vlcEvet.Volume);
+                        break;
+                    case "LogoY":
+                        VLCSetLogoY(vlcEvet.Volume);
+                        break;
+                    case "LogoOpacity":
+                        VLCLogoOpacity(vlcEvet.Volume);
+                        break;
+                    case "LogoPosition":
+                        VLCLogoPosition(vlcEvet.LogoPosition);
+                        break;
                 }
             };
 
         }
 
+        
 
         public void VLCPlay()
         {
@@ -130,13 +173,80 @@ namespace HERA.UI.VLC
         {
             vLCUserControl.SetGamma(gamma);
         }
+        public void VLCSetText(string text)
+        {
+            vLCUserControl.SetMarqueeText(text);    
+        }
+        public void VLCTextOpacity(int opacity)
+        {
+            vLCUserControl.SetMarqueeOpacity(opacity);
+        }
+        public void VLCSetTextColor(Color.ColorHex color)
+        {
+            vLCUserControl.SetMarqueeColor(color);
+        }
+
+        public void VLCSetTextPosition(Position.TextPosition position)
+        {
+            vLCUserControl.SetMarqueePosition(position);
+        }
         public void MainWindowSizeChanged(object sender, RoutedEventArgs e)      
         {
             Console.WriteLine(ActualHeight + " " + ActualWidth);
             vLCUserControl.SetAspectRatio((int)ActualWidth, (int)ActualHeight);
         }
 
+        public void VLCSetMarqueEnable(bool marqueEnable)
+        {
+            
+            vLCUserControl.MarqueeOptionsEnable = marqueEnable;
+            vLCUserControl.SetMarqueeOptions();
+        }
 
+        public void VLCSetTextSize(int size)
+        {
 
+            vLCUserControl.SetMarqueeSize(size);
+        }
+
+        public void VLCSetRefresh(int refresh)
+        {
+            vLCUserControl.SetMarqueeRefresh(refresh);
+        }
+
+        public void VLCSetX(int x)
+        {
+            vLCUserControl.SetMarqueeX(x);
+        }
+
+        public void VLCSetY(int y)
+        {
+            vLCUserControl.SetMarqueeY(y);
+        }
+
+        public void VLCSetLogo(string logoPath)
+        {
+            vLCUserControl.SetLogoFile(logoPath);
+        }
+
+        public void VLCSetLogoX(int x)
+        {
+            Console.WriteLine(x);
+            vLCUserControl.SetLogoX(x);
+        }
+        public void VLCSetLogoY(int y)
+        {
+            vLCUserControl.SetLogoY(y);
+        }
+
+        public void VLCLogoOpacity(int opacity)
+        {
+            vLCUserControl.SetLogoOpacity(opacity);
+        }
+
+        public void VLCLogoPosition(Position.LogoPosition position)
+        {
+            vLCUserControl.SetLogoPosition(position);
+        }
     }
 }

@@ -28,16 +28,17 @@ namespace HERA.UI.EDGE
         public string LastVisitedUrl;
         public Point LastLocationPoint = new Point();
         public bool CropEnable = false;
+        public bool NewWindowEnable = false;
         public EdgeUserControl()
         {
             InitializeComponent();
             Loaded += EdgeLoaded;
+
         }
 
         private void EdgeLoaded(object sender, RoutedEventArgs e)
         {
             InitializeEdge();
-
         }
 
         public async void InitializeEdge()
@@ -64,6 +65,16 @@ namespace HERA.UI.EDGE
                     HideScroll(false);
                 }
             };
+            EdgeWebView.CoreWebView2.NewWindowRequested += webView_NewWindowRequested;
+        }
+
+        private void webView_NewWindowRequested(object sender, CoreWebView2NewWindowRequestedEventArgs e)
+        {
+            e.Handled = true;
+            if (NewWindowEnable)
+            {
+                ((CoreWebView2)sender).Navigate(e.Uri);
+            }   
         }
 
 
@@ -80,18 +91,9 @@ namespace HERA.UI.EDGE
 
         public void SetZoom(double zoom)
         {
-            if (zoom <= 0)
-            {
-                EdgeWebView.ZoomFactor = 0;
-            }
-            else if (zoom > 5)
-            {
-                EdgeWebView.ZoomFactor = 5;
-            }
-            else
-            {
-                EdgeWebView.ZoomFactor = zoom;
-            }
+            zoom = Math.Clamp(zoom, Edge_Constant.MIN_ZOOM, Edge_Constant.MAX_ZOOM);
+            EdgeWebView.ZoomFactor = zoom;
+            
         }
         
         public void SetLocation(int x , int y)
@@ -127,8 +129,6 @@ namespace HERA.UI.EDGE
         public void Crop(int x,int y,double z,double sx,double sy,int sl,int st)
         {
             Console.WriteLine(CropEnable);
-            
-
             string bodyTransformOrigin = "document.body.style.transformOrigin = '" + sl + "px " + st + "px'";
             string bodyScaleScript = "document.body.style.transform = 'scale(" + sx + "," + sy + ")'";
             string Location = $"window.scrollTo( {x}, {y} );";
@@ -144,8 +144,18 @@ namespace HERA.UI.EDGE
                 EdgeWebView.CoreWebView2.ExecuteScriptAsync(bodyScaleScript);
                 EdgeWebView.CoreWebView2.ExecuteScriptAsync(bodyTransformOrigin);
             }
-
+            
             EdgeWebView.CoreWebView2.ExecuteScriptAsync(Location);
+        }
+
+        public void GoBack()
+        {
+            EdgeWebView.CoreWebView2.GoBack();
+        }
+
+        public void GoForward()
+        {
+            EdgeWebView.CoreWebView2.GoForward();
         }
 
     }

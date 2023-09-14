@@ -50,7 +50,7 @@
         <ComboBox x:Name="LogoFilePathComboBox" HorizontalAlignment="Left" Margin="10,339,0,0" VerticalAlignment="Top" Width="120"/>
         <Slider x:Name="LogoXSlider" HorizontalAlignment="Left" Minimum="0" Maximum="3000" Margin="155,343,0,0" VerticalAlignment="Top" Width="120" ValueChanged="LogoXSlider_ValueChanged"/>
         <Slider x:Name="LogoYSlider" HorizontalAlignment="Left" Minimum="0" Maximum="3000" Margin="296,343,0,0" VerticalAlignment="Top" Width="120" ValueChanged="LogoYSlider_ValueChanged"/>
-        <ComboBox x:Name="LogoPositionComboBox" HorizontalAlignment="Left" Margin="433,339,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="LogoPositionComboBox_SelectionChanged"/>
+        <ComboBox x:Name="LogoPositionComboBox" HorizontalAlignment="Left" Margin="433,339,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="LogoPositionComboBox_SelectionChanged" IsEnabled="False"/>
         <Slider x:Name="LogoOpacitySlider" Minimum="0" Maximum="255"  HorizontalAlignment="Left" Margin="579,343,0,0" VerticalAlignment="Top" Width="120" ValueChanged="LogoOpacitySlider_ValueChanged"/>
         <Label Content="LogoX" HorizontalAlignment="Left" Margin="155,312,0,0" VerticalAlignment="Top"/>
         <Label x:Name="LogoXLabel" Content="0" HorizontalAlignment="Left" Margin="196,312,0,0" VerticalAlignment="Top"/>
@@ -59,7 +59,8 @@
         <Label Content="Logo Opacity" HorizontalAlignment="Left" Margin="579,312,0,0" VerticalAlignment="Top"/>
         <Label x:Name="LogoOpacityLabel" Content="0" HorizontalAlignment="Left" Margin="660,312,0,0" VerticalAlignment="Top"/>
         <ComboBox  x:Name="fileComboBox" HorizontalAlignment="Left" Margin="414,12,0,0" VerticalAlignment="Top" Width="181" Height="34"/>
-        <ComboBox x:Name="AudioOutputsComboBox" HorizontalAlignment="Left" Margin="10,422,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="AudioOutputsComboBox" HorizontalAlignment="Left" Margin="10,422,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="AudioOutputsComboBox_SelectionChanged"/>
+        <ComboBox x:Name="AudioOutputDevicesComboBox" HorizontalAlignment="Left" Margin="155,422,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="AudioOutputDevicesComboBox_SelectionChanged"/>
 
     </Grid>
 </Window>

@@ -28,7 +28,8 @@ namespace HERA.UI.VLC
         public event EventHandler<VLCState> OnEvent = delegate { };
         public string MainFolderPath = "C:\\Users\\AliEmirErcan\\Desktop\\VideoTest";
         public string MainImagesFolderPath = "C:\\Users\\AliEmirErcan\\Desktop\\ImageTest";
-        
+        public IEnumerable<AudioOutputDescription> audioOutputDescription;
+        public IEnumerable<AudioOutputDevice> audioOutputDevices;
         public TestWindow()
         {
             InitializeComponent();
@@ -43,6 +44,12 @@ namespace HERA.UI.VLC
             ColorComboBox.SelectionChanged += ColorComboBoxSelectionChanged;
             fileComboBox.SelectionChanged += fileComboBoxSelectionChanged;
             LogoFilePathComboBox.SelectionChanged += LogoFilePathComboBoxSelectionChanged;
+            GetAudioOutputs(ref audioOutputDescription);
+            foreach(AudioOutputDescription description in audioOutputDescription)
+            {
+                AudioOutputsComboBox.Items.Add(description.Name);
+            }
+
 
         }
 
@@ -60,8 +67,52 @@ namespace HERA.UI.VLC
             libvlc.Dispose();
         }
 
+        private void AudioOutputsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            AudioOutputDevicesComboBox.Items.Clear();
+            GetAudioDevices(ref audioOutputDevices, (string)AudioOutputsComboBox.SelectedItem);
+            
+            foreach (AudioOutputDevice device in audioOutputDevices)
+            {
+                Console.WriteLine(device.DeviceIdentifier);
+                AudioOutputDevicesComboBox.Items.Add(device.Description);
+            }
+        }
+
+        private void AudioOutputDevicesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string audioDevice ="";
+
+            foreach (AudioOutputDevice device in audioOutputDevices)
+            {
+                if(device.Description == (string)AudioOutputDevicesComboBox.SelectedItem)
+                {
+                    audioDevice = device.DeviceIdentifier;
+                }
+            }
+
+            if (OnEvent is not null)
+            {
+                OnEvent(this, new()
+                {
+                    State = "AudioOutput",
+                    AudioOutput = AudioOutputsComboBox.Text,
+                    AudioDevice = audioDevice
+                }) ;
+            }
+        }
+        /*public void SetAudioDevice(string deviceName, string deviceIdentifier)
+        {
+            if (_mediaPlayer != null)
+            {
+                _mediaPlayer.SetAudioOutput("mmdevice");
+                _mediaPlayer.SetOutputDevice("{0.0.0.00000000}.{6427d743-1e72-416a-8345-102e5dcdc4bf}", "mmdevice");
+            }
+
+        }*/
         private void PlayClick(object sender, RoutedEventArgs e)
         {
+
             if (OnEvent is not null)
             {
                 OnEvent(this, new()
@@ -488,5 +539,7 @@ namespace HERA.UI.VLC
                 }
             }
         }
+
+        
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibVLCSharp.Shared.Structures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,5 +19,7 @@ namespace HERA.UI.VLC
         public Position.TextPosition TextPosition { get; set; }   
 
         public Position.LogoPosition LogoPosition { get; set; } 
+        public string AudioOutput { get; set; }
+        public string AudioDevice { get; set; }
     }
 }

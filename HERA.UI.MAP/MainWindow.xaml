@@ -1,0 +1,18 @@
+﻿<Window x:Class="HERA.UI.MAP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HERA.UI.MAP"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid x:Name="MainGrid">
+        <DockPanel x:Name="MainMapDock" Margin="131,0,0,0"/>
+        <Button x:Name="UpButton" Content="UP" HorizontalAlignment="Left" Margin="43,20,0,0" VerticalAlignment="Top" Width="41" Click="UpButton_Click" />
+        <Button x:Name="DownButton" Content="DOWN" HorizontalAlignment="Left" Margin="43,69,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.017,-0.725" Click="DownButton_Click"/>
+        <Button x:Name="RightButton" Content="Right" HorizontalAlignment="Left" Margin="86,45,0,0" VerticalAlignment="Top" Click="RightButton_Click"/>
+        <Button x:Name="LeftButton" Content="LEFT" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Click="LeftButton_Click"/>
+        <Slider x:Name="ZoomSlider" HorizontalAlignment="Left" Margin="4,122,0,0" VerticalAlignment="Top" Width="120" Value="15" Minimum="0" Maximum="32" ValueChanged="ZoomSlider_ValueChanged" />
+
+    </Grid>
+</Window>

@@ -32,5 +32,8 @@
         <Label Content="ST" HorizontalAlignment="Left" Margin="377,263,0,0" VerticalAlignment="Top"/>
         <Label x:Name="sxLabel" Content="N/A"  HorizontalAlignment="Left" Margin="190,278,0,0" VerticalAlignment="Top" Width="45"/>
         <Label x:Name="syLabel" Content="N/A" HorizontalAlignment="Left" Margin="191,309,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="220,129,0,0" VerticalAlignment="Top" Height="33" Width="99" Click="BackButton_Click" />
+        <Button x:Name="ForwardButton" Content="Forward" HorizontalAlignment="Left" Margin="324,129,0,0" VerticalAlignment="Top" Height="33" Width="99" Click="ForwardButton_Click"/>
+        <CheckBox x:Name="NewWindowEnableButton" Content="New Window Enable" HorizontalAlignment="Left" Margin="445,138,0,0" VerticalAlignment="Top" Click="NewWindowEnableButton_Checked"/>
     </Grid>
 </Window>

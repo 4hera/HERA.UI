@@ -62,11 +62,22 @@ namespace HERA.UI.EDGE
                     case "Crop":
                         EdgeCrop(edgeEvent.Crop);
                         break;
+                    case "Back":
+                        EdgeBack();
+                        break;
+                    case "Forward":
+                        EdgeForward();
+                        break;
+                    case "NewWindow":
+                        EdgeNewWindow(edgeEvent.isEnable);
+                        break;
                 }
             };
             testWindow.Show();
    
         }
+
+        
 
         public void EdgeOpenLink(Uri uri)
         {
@@ -116,8 +127,20 @@ namespace HERA.UI.EDGE
             int st = crop.st;
             edgeUserControl.Crop(x, y, z, sx, sy, sl, st);
         }
+        
+        public void EdgeBack()
+        {
+            edgeUserControl.GoBack();
+        }
 
+        public void EdgeForward()
+        {
+            edgeUserControl.GoForward();
+        }
 
-
+        private void EdgeNewWindow(bool isEnable)
+        {
+            edgeUserControl.NewWindowEnable = isEnable;
+        }
     }
 }

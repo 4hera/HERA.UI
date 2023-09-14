@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Net.WebRequestMethods;
 
 namespace HERA.UI.EDGE
 {
@@ -33,7 +34,8 @@ namespace HERA.UI.EDGE
                 "https://www.milliyet.com.tr",
                 "https://www.microsoft.com",
                 "https://www.youtube.com",
-                "https://expired.badssl.com/"
+                "https://expired.badssl.com/",
+                "http://demo.4hera.com:92/login"
             };
             Loaded += (s, e) =>
             {
@@ -219,6 +221,43 @@ namespace HERA.UI.EDGE
                 }
             });
             
+        }
+
+       
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (OnEvent is not null)
+            {
+                OnEvent(this, new()
+                {
+                    State = "Back"
+                });
+            }
+        }
+
+        private void ForwardButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (OnEvent is not null)
+            {
+                OnEvent(this, new()
+                {
+                    State = "Forward"
+                });
+            }
+        }
+
+        private void NewWindowEnableButton_Checked(object sender, RoutedEventArgs e)
+        {
+            bool isEnable = NewWindowEnableButton.IsChecked ?? false;
+
+            if (OnEvent is not null)
+            {
+                OnEvent(this, new()
+                {
+                    State = "NewWindow",
+                    isEnable = isEnable
+                });
+            }
         }
     }
 }

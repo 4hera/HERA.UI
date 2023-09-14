@@ -114,12 +114,19 @@ namespace HERA.UI.VLC
                     case "LogoPosition":
                         VLCLogoPosition(vlcEvet.LogoPosition);
                         break;
+                    case "AudioOutput":
+                        VLCSetAudioOutput(vlcEvet.AudioOutput, vlcEvet.AudioDevice);
+                        break;
+                    
                 }
             };
 
         }
 
-        
+        private void VLCSetAudioOutput(string audioOutput, string audioDevice)
+        {
+            vLCUserControl.SetAudioDevice(audioOutput, audioDevice);
+        }
 
         public void VLCPlay()
         {

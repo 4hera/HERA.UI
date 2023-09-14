@@ -72,23 +72,18 @@ namespace HERA.UI.VLC
         {
             SetPath("C:\\Users\\AliEmirErcan\\Desktop\\VideoTest\\Basketball.mp4");
             InitializeVLC();
-            GetAudioOutputs(ref audioOutputDescription);
-            Console.WriteLine(string.Join(",", audioOutputDescription.Select(x => x.Name)));
-            GetAudioDevices(ref audioOutputDevice, "mmdevice");
-            Console.WriteLine(string.Join(",", audioOutputDevice.Select(x => x.DeviceIdentifier)));
-
-            //m _mediaPlayer.TakeSnapshot
             SetAspectRatio((int)ActualWidth, (int)ActualHeight);
-
         }
 
         private void InitializeParameters()
         {
             parameters.Clear();
             parameters.Add("--aout=any");
+          
             if (Loop)
             {
                 parameters.Add("--input-repeat=65535");
+                //parameters.Add("--no-accel");
             }
             if (extraParameters.Count > 0)
             {
@@ -112,6 +107,11 @@ namespace HERA.UI.VLC
             SetVideoOptions();
             SetMarqueeOptions();
             SetLogoOptions();
+            if (DeviceName != null && DeviceIdentifier != null)
+            {
+                _mediaPlayer.SetAudioOutput(DeviceName);
+                _mediaPlayer.SetOutputDevice(DeviceIdentifier, DeviceName);
+            }
             _mediaPlayer.Play(media);        
         }
 
@@ -134,8 +134,10 @@ namespace HERA.UI.VLC
             if (_mediaPlayer is not null)
             {
                 _mediaPlayer.Pause();
-
+                _mediaPlayer.TakeSnapshot(0, "C:\\Users\\AliEmirErcan\\Desktop\\VideoTest", 0, 0);
             }
+
+           
 
         }
 
@@ -488,8 +490,6 @@ namespace HERA.UI.VLC
 
         #endregion
 
-
-
         public void GetAudioOutputs(ref IEnumerable<AudioOutputDescription> audioOutputDescription)
         {
             LibVLC libvlc = new LibVLC();
@@ -506,13 +506,20 @@ namespace HERA.UI.VLC
 
         public void SetAudioDevice(string deviceName, string deviceIdentifier)
         {
-            if(_mediaPlayer != null) 
+            Console.WriteLine("setaudio");
+            Console.WriteLine(deviceName);
+            Console.WriteLine( deviceIdentifier);
+            DeviceName = deviceName;
+            DeviceIdentifier = deviceIdentifier;
+            if (_mediaPlayer != null) 
             {
-                _mediaPlayer.SetAudioOutput("mmdevice");
-                _mediaPlayer.SetOutputDevice("{0.0.0.00000000}.{6427d743-1e72-416a-8345-102e5dcdc4bf}", "mmdevice");
+                _mediaPlayer.Dispose();
+                InitializeVLC();
             }
             
         }
+
+
     }
 
 

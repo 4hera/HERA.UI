@@ -45,6 +45,19 @@ namespace HERA.UI.CHROME
         {
             CefSettings settings = new CefSettings();
             settings.CefCommandLineArgs.Add("ignore-certificate-errors");
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            settings.CachePath = path.ToString();
+
+            //settings.UserDataPath = path.ToString();
+
+            settings.CefCommandLineArgs.Add("use-fake-ui-for-media-stream", "1");
+
+            settings.CefCommandLineArgs.Add("enable-usermedia-screen-capture", "1");
+
+            settings.CefCommandLineArgs.Add("enable-media-stream", "1");
+
+            settings.LogSeverity = LogSeverity.Disable;
+
             Cef.Initialize(settings);
             chromiumWebBrowser = new ChromiumWebBrowser();
             chromiumWebBrowser.Address = "http://www.google.com";

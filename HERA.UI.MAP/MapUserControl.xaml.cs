@@ -10,6 +10,11 @@ using static System.Net.Mime.MediaTypeNames;
 using System;
 using System.Windows.Media.Imaging;
 using System.Windows.Media.Effects;
+using System.Net.Sockets;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Text;
+using System.Net;
 
 namespace HERA.UI.MAP
 {
@@ -25,8 +30,7 @@ namespace HERA.UI.MAP
         public int MarkerHeight = 40;
         public string MarkerColor = "#32a852";
         GMapMarker gMapMarker;
-
-
+    
 
         public MapUserControl()
         {
@@ -45,7 +49,7 @@ namespace HERA.UI.MAP
             Map.MapProvider = GMapProviders.CustomMap;
             foreach (GMapProvider prov in GMapProviders.List)
             {
-                Console.WriteLine(prov.Name);
+            //    Console.WriteLine(prov.Name);
             }
            // GMapProviders.YahooMap.ForceBasicHttpAuthentication();
             GMaps.Instance.Mode = AccessMode.ServerOnly;
@@ -61,10 +65,10 @@ namespace HERA.UI.MAP
             SetMarker();
             GeoCoderStatusCode status;
             var pos = GMapProviders.GoogleTerrainMap.GetPoint("Ostim Teknopark Turuncu Bina", out status);
-            Console.WriteLine(status);
+        //    Console.WriteLine(status);
             if (pos != null && status == GeoCoderStatusCode.OK)
             {
-                Console.WriteLine(pos.Value);
+             //   Console.WriteLine(pos.Value);
             }
         }
 

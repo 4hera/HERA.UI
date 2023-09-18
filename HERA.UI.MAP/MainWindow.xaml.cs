@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GMap.NET.MapProviders;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,12 +21,18 @@ namespace HERA.UI.MAP
     /// </summary>
     public partial class MainWindow : Window
     {
-        MapUserControl mapUserControl = new MapUserControl();
+        MapUserControl mapUserControl;
+
+
         public MainWindow()
         {
             InitializeComponent();
-
+            mapUserControl = new MapUserControl();
             MainMapDock.Children.Add(mapUserControl);
+            foreach (GMapProvider prov in GMapProviders.List)
+            {
+                ProviderComboBox.Items.Add(prov.Name);
+            }
         }
 
         private void UpButton_Click(object sender, RoutedEventArgs e)
@@ -54,9 +61,53 @@ namespace HERA.UI.MAP
 
      
         private void ZoomSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        { 
+            if(mapUserControl is not null)
+            {
+                mapUserControl.SetZoom(ZoomSlider.Value);
+            }
+            
+        }
+
+        private void MarkerWidth_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            Console.WriteLine(ZoomSlider.Value);
-            mapUserControl.SetZoom(ZoomSlider.Value);
+            int value = (int)MarkerWidth.Value;
+            mapUserControl.SetMarkerWidth(value);   
+        }
+
+        private void MarkerHeight_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            int value = (int)MarkerHeight.Value;
+            mapUserControl.SetMarkerHeight(value);
+        }
+
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                mapUserControl.SetMarkerColor(HexColor.Text);
+            }
+        }
+
+        private void ProviderComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            foreach (GMapProvider pr in GMapProviders.List)
+            {
+                if (pr.Name == ProviderComboBox.SelectedItem.ToString())
+                {
+                    mapUserControl.SetMapProvider(pr);
+                }
+            }
+
+       
+                
+            
+
+            
+
+           
+
         }
     }
 }

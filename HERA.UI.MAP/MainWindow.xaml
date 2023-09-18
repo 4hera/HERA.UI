@@ -12,7 +12,29 @@
         <Button x:Name="DownButton" Content="DOWN" HorizontalAlignment="Left" Margin="43,69,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.017,-0.725" Click="DownButton_Click"/>
         <Button x:Name="RightButton" Content="Right" HorizontalAlignment="Left" Margin="86,45,0,0" VerticalAlignment="Top" Click="RightButton_Click"/>
         <Button x:Name="LeftButton" Content="LEFT" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Click="LeftButton_Click"/>
-        <Slider x:Name="ZoomSlider" HorizontalAlignment="Left" Margin="4,122,0,0" VerticalAlignment="Top" Width="120" Value="15" Minimum="0" Maximum="32" ValueChanged="ZoomSlider_ValueChanged" />
+        <Slider x:Name="ZoomSlider" HorizontalAlignment="Left" Margin="4,122,0,0" VerticalAlignment="Top" Width="120" Value="15" Minimum="0" Maximum="32"  ValueChanged="ZoomSlider_ValueChanged" />
+        <Slider x:Name="MarkerWidth" Minimum="0" Maximum="80" HorizontalAlignment="Left" Margin="-20,186,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.5,0.5" ValueChanged="MarkerWidth_ValueChanged">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
+        <Slider x:Name="MarkerHeight" Minimum="0" Maximum="80" HorizontalAlignment="Left" Margin="23,186,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.5,0.5" ValueChanged="MarkerHeight_ValueChanged">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
+        <TextBox x:Name="HexColor" HorizontalAlignment="Left" Margin="6,258,0,0" TextWrapping="Wrap" Text="Hex" VerticalAlignment="Top" Width="120"  KeyDown="OnKeyDownHandler"/>
+        <ComboBox x:Name="ProviderComboBox" HorizontalAlignment="Left" Margin="6,294,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ProviderComboBox_SelectionChanged"/>
 
     </Grid>
 </Window>

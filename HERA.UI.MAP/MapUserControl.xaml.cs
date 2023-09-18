@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GMap.NET.WindowsPresentation;
 using GMap.NET.MapProviders;
 using GMap.NET;
+using static System.Net.Mime.MediaTypeNames;
+using System;
+using System.Windows.Media.Imaging;
+using System.Windows.Media.Effects;
 
 namespace HERA.UI.MAP
 {
@@ -24,10 +19,14 @@ namespace HERA.UI.MAP
     public partial class MapUserControl : UserControl
     {
         GMapControl Map;
-        public double Lat = 39.925533;
-        public double Lng = 32.866287;
+        public double Lat = 39.93147475673178;
+        public double Lng = 32.81545932221276;
+        public int MarkerWidth = 40;
+        public int MarkerHeight = 40;
+        public string MarkerColor = "#32a852";
         GMapMarker gMapMarker;
-        RedDotMarker redDotMarker = new RedDotMarker();
+
+
 
         public MapUserControl()
         {
@@ -43,7 +42,14 @@ namespace HERA.UI.MAP
         private void InitializeMap()
         {
             Map = new GMapControl();
-            Map.MapProvider = GMapProviders.GoogleMap;
+            Map.MapProvider = GMapProviders.CustomMap;
+            foreach (GMapProvider prov in GMapProviders.List)
+            {
+                Console.WriteLine(prov.Name);
+            }
+           // GMapProviders.YahooMap.ForceBasicHttpAuthentication();
+            GMaps.Instance.Mode = AccessMode.ServerOnly;
+         
             MapDock.Children.Add(Map);
             SetPosition();
             Map.MinZoom = 1;
@@ -52,18 +58,19 @@ namespace HERA.UI.MAP
             Map.ShowCenter = false;
             PointLatLng pointLatLng = new PointLatLng(Lat, Lng);
             gMapMarker = new GMapMarker(pointLatLng);
-
-            gMapMarker.Shape = new Ellipse { 
-                Width = 40,
-                Height = 40,
-                Stroke = Brushes.Red,
-                StrokeThickness = 1.5
-            };
-           
-            Map.Markers.Add(gMapMarker);
+            SetMarker();
+            GeoCoderStatusCode status;
+            var pos = GMapProviders.GoogleTerrainMap.GetPoint("Ostim Teknopark Turuncu Bina", out status);
+            Console.WriteLine(status);
+            if (pos != null && status == GeoCoderStatusCode.OK)
+            {
+                Console.WriteLine(pos.Value);
+            }
         }
 
-        public void SetPosition() {
+
+        public void SetPosition()
+        {
             PointLatLng pointLatLng = new PointLatLng(Lat, Lng);
             foreach (GMapMarker marker in Map.Markers)
             {
@@ -86,13 +93,59 @@ namespace HERA.UI.MAP
 
         public void SetZoom(double zoom)
         {
-            if(Map is not null) {
+            if (Map is not null)
+            { 
                 Map.Zoom = zoom;
             }
-            
         }
 
+        public void SetMarker()
+        {
+            try
+            {
+                Color color = (Color)ColorConverter.ConvertFromString(MarkerColor);
+                SolidColorBrush brush = new SolidColorBrush(color);
+                Map.Markers.Clear();
+                gMapMarker.Shape = new Ellipse
+                {
+                    Width = MarkerWidth,
+                    Height = MarkerHeight,
+                    Fill = brush,
+                    Effect = new DropShadowEffect()
+                };
+                Map.Markers.Add(gMapMarker);
+                SetPosition();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+        }
 
+        public void SetMarkerWidth(int width)
+        {
+            MarkerWidth = width;
+            SetMarker();
+        }
 
+        public void SetMarkerHeight(int height)
+        {
+            MarkerHeight = height;
+            SetMarker();
+        }
+
+        public void SetMarkerColor(string hex)
+        {
+            MarkerColor = hex;
+            SetMarker();
+        }
+
+        public void SetMapProvider(GMapProvider gMapProvider)
+        {
+            Map.MapProvider = gMapProvider;
+            Console.WriteLine(Map.MapProvider.Copyright);
+            Console.WriteLine(Map.MapProvider.Name);
+            Console.WriteLine(Map.MapProvider.Id);
+        }
     }
 }

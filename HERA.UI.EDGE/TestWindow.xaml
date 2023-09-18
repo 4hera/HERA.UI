@@ -12,7 +12,7 @@
         <ComboBox x:Name="LinkComboBox" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Width="687"/>
         <Slider x:Name="ZoomSlider" HorizontalAlignment="Left" Margin="65,91,0,0" VerticalAlignment="Top" Width="383" Minimum="0" Maximum="5"/>
         <Button Content="LastVisited" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top" Height="33" Width="99" Click="LastVisitedClick"/>
-        <CheckBox x:Name="HideScrollCheckBox" Content="Hide Scroll" HorizontalAlignment="Left" Margin="496,91,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="HideScrollCheckBox" Content="Hide Scroll" HorizontalAlignment="Left" Margin="496,91,0,0" VerticalAlignment="Top" Checked="HideScrollCheckBox_Checked"/>
         <TextBox x:Name="LocationXTextBox" HorizontalAlignment="Left" Margin="33,188,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="71" Height="45" FontSize="24" PreviewTextInput="NumberValidationTextBox"/>
         <TextBox x:Name="LocationYTextBox" HorizontalAlignment="Left" Margin="132,188,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="71" Height="45" FontSize="24" PreviewTextInput="NumberValidationTextBox"/>
         <Button Content="Set Location" HorizontalAlignment="Left" Margin="217,192,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.177,-0.198" Width="108" Height="34" Click="SetLocationClick"/>

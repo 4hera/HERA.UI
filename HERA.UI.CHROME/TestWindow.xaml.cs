@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Metrics;
 using System.Linq;
-using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -15,113 +12,79 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using static System.Net.WebRequestMethods;
 
-namespace HERA.UI.EDGE
+namespace HERA.UI.CHROME
 {
     /// <summary>
     /// Interaction logic for TestWindow.xaml
     /// </summary>
     public partial class TestWindow : Window
     {
-
-        public event EventHandler<EdgeState> OnEvent = delegate { };
+        public event EventHandler<ChromeState> OnEvent = delegate { };
         public TestWindow()
         {
             InitializeComponent();
             List<string> links = new List<string>
             {
+                "http://www.dummysoftware.com/popupdummy_testpage.html",
                 "https://www.milliyet.com.tr",
                 "https://www.microsoft.com",
                 "https://www.youtube.com",
                 "https://expired.badssl.com/",
                 "http://demo.4hera.com:92/login"
             };
+
             Loaded += (s, e) =>
             {
                 LinkComboBox.ItemsSource = links;
-                ZoomSlider.Value = 1;
-                LinkComboBox.SelectedIndex = 0;
-                SetUrl();
             };
 
-
-            LinkComboBox.SelectionChanged += LinkComboBoxSelectionChanged;
-            ZoomSlider.ValueChanged += ZoomSliderValueChanged;
             HideScrollCheckBox.Click += HideScrollCheckBoxClicked;
-            CropEnableCheckBox.Click += CropEnableCheckBoxClicked;
         }
-
 
         private void OpenButtonClick(object sender, RoutedEventArgs e)
         {
-            Uri uri = new Uri(LinkText.Text);
             if (OnEvent is not null)
             {
                 OnEvent(this, new()
                 {
-                    State = "OpenLink",
-                    Source = uri
+                    State = "OpenAdress",
+                    Adress = AdressText.Text
                 }); ;
             }
         }
 
 
-        private void LinkComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            SetUrl();
 
-        }
-        public void SetUrl()
+        private void LinkComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string selectedLink = LinkComboBox.SelectedItem as string;
-            Uri uri = new Uri(selectedLink);
             if (OnEvent is not null)
             {
                 OnEvent(this, new()
                 {
-                    State = "OpenLink",
-                    Source = uri
-                });
+                    State = "SetAdress",
+                    Adress = LinkComboBox.SelectedItem.ToString()
+                }); ;
             }
         }
 
-        private void ZoomSliderValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void ZoomSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            Console.WriteLine(ZoomSlider.Value);
             if (OnEvent is not null)
             {
                 OnEvent(this, new()
                 {
-                    State = "Zoom",
+                    State = "SetZoom",
                     Zoom = ZoomSlider.Value
-                });
+                }); ;
             }
         }
 
-        private void LastVisitedClick(object sender, RoutedEventArgs e)
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            if (OnEvent is not null)
-            {
-                OnEvent(this, new()
-                {
-                    State = "LastVisited",
-                });
-            }
-        }
-
-        private void HideScrollCheckBoxClicked(object sender, RoutedEventArgs e)
-        {
-
-            bool hideScroll = HideScrollCheckBox.IsChecked ?? false;
-
-            if (OnEvent is not null)
-            {
-                OnEvent(this, new()
-                {
-                    State = "HideScroll",
-                    HideScroll = hideScroll
-                });
-            }
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
 
         private void SetLocationClick(object sender, RoutedEventArgs e)
@@ -140,25 +103,31 @@ namespace HERA.UI.EDGE
             }
         }
 
-        private void LastLocationClick(object sender, RoutedEventArgs e)
+        private void HideScrollCheckBoxClicked(object sender, RoutedEventArgs e)
         {
-            OnEvent(this, new()
+
+            bool hideScroll = HideScrollCheckBox.IsChecked ?? false;
+
+            if (OnEvent is not null)
             {
-                State = "GetLocation",
-            });
+                OnEvent(this, new()
+                {
+                    State = "SetHideScroll",
+                    HideScroll = hideScroll
+                });
+            }
         }
 
         private void CropEnableCheckBoxClicked(object sender, RoutedEventArgs e)
         {
 
             bool isEnable = CropEnableCheckBox.IsChecked ?? false;
-
             if (OnEvent is not null)
             {
                 OnEvent(this, new()
                 {
-                    State = "CropEnable",
-                    isEnable = isEnable
+                    State = "SetCropEnable",
+                    CropEnable = isEnable
                 });
             }
         }
@@ -183,55 +152,9 @@ namespace HERA.UI.EDGE
 
             OnEvent(this, new()
             {
-                State = "Crop",
+                State = "SetCrop",
                 Crop = crop
             });
-        }
-
-
-        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-
-        private void sxSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                if (sxSlider is not null && sxLabel is not null)
-                {
-                    sxLabel.Content = sxSlider.Value;
-                    Crop();
-                }
-
-            });
-          
-        }
-
-        private void sySlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                if (sySlider is not null && syLabel is not null)
-                {
-                    syLabel.Content = sySlider.Value;
-                    Crop();
-                }
-            });
-            
-        }
-
-       
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (OnEvent is not null)
-            {
-                OnEvent(this, new()
-                {
-                    State = "Back"
-                });
-            }
         }
 
         private void ForwardButton_Click(object sender, RoutedEventArgs e)
@@ -240,24 +163,55 @@ namespace HERA.UI.EDGE
             {
                 OnEvent(this, new()
                 {
-                    State = "Forward"
+                    State = "GoForward",
                 });
             }
         }
 
-        private void NewWindowEnableButton_Checked(object sender, RoutedEventArgs e)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            bool isEnable = NewWindowEnableButton.IsChecked ?? false;
-
             if (OnEvent is not null)
             {
                 OnEvent(this, new()
                 {
-                    State = "NewWindow",
-                    isEnable = isEnable
+                    State = "GoBack",
                 });
             }
         }
-    }
+
+        private void LastVisitedClick(object sender, RoutedEventArgs e)
+        {
+            if (OnEvent is not null)
+            {
+                OnEvent(this, new()
+                {
+                    State = "GetLastVisited",
+                });
+            }
+        }
+
+        private void LastLocationClick(object sender, RoutedEventArgs e)
+        {
+            if (OnEvent is not null)
+            {
+                OnEvent(this, new()
+                {
+                    State = "GetLastLocation",
+                });
+            }
+        }
+
+        private void NewWindowEnableCheckBoxClicked(object sender, RoutedEventArgs e)
+        {
+            bool isEnable = NewWindowEnableCheckBox.IsChecked ?? false;
+            if (OnEvent is not null)
+            {
+                OnEvent(this, new()
+                {
+                    State = "SetNewWindowEnable",
+                    NewWindowEnable = isEnable
+                });
+            }
+        }
     }
 }

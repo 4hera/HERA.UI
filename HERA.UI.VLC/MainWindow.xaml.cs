@@ -28,6 +28,7 @@ namespace HERA.UI.VLC
             InitializeComponent();
             Loaded += MainWindowLoaded;
             SizeChanged += MainWindowSizeChanged;
+           
         }
 
         private void MainWindowLoaded(object sender, RoutedEventArgs e)

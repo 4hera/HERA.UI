@@ -15,6 +15,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Text;
 using System.Net;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace HERA.UI.MAP
 {
@@ -24,8 +26,8 @@ namespace HERA.UI.MAP
     public partial class MapUserControl : UserControl
     {
         GMapControl Map;
-        public double Lat = 39.93147475673178;
-        public double Lng = 32.81545932221276;
+        public double Lat = 39.97890358816007;
+        public double Lng = 32.73618203701316;
         public int MarkerWidth = 40;
         public int MarkerHeight = 40;
         public string MarkerColor = "#32a852";
@@ -36,6 +38,7 @@ namespace HERA.UI.MAP
         {
             InitializeComponent();
             Loaded += MapLoaded;
+            GMapProviders.YahooMap.ForceBasicHttpAuthentication("ercan_emir@yahoo.com", "tekken3gon");
         }
 
         private void MapLoaded(object sender, RoutedEventArgs e)
@@ -47,12 +50,8 @@ namespace HERA.UI.MAP
         {
             Map = new GMapControl();
             Map.MapProvider = GMapProviders.CustomMap;
-            foreach (GMapProvider prov in GMapProviders.List)
-            {
-            //    Console.WriteLine(prov.Name);
-            }
-           // GMapProviders.YahooMap.ForceBasicHttpAuthentication();
-            GMaps.Instance.Mode = AccessMode.ServerOnly;
+
+            GMaps.Instance.Mode = AccessMode.ServerAndCache;
          
             MapDock.Children.Add(Map);
             SetPosition();
@@ -64,12 +63,16 @@ namespace HERA.UI.MAP
             gMapMarker = new GMapMarker(pointLatLng);
             SetMarker();
             GeoCoderStatusCode status;
+            GMapProviders.GoogleMap.ApiKey = "";
             var pos = GMapProviders.GoogleTerrainMap.GetPoint("Ostim Teknopark Turuncu Bina", out status);
-        //    Console.WriteLine(status);
             if (pos != null && status == GeoCoderStatusCode.OK)
             {
-             //   Console.WriteLine(pos.Value);
+                Console.WriteLine(status);
+                Console.WriteLine(pos.Value);
             }
+           
+
+            
         }
 
 
@@ -117,6 +120,25 @@ namespace HERA.UI.MAP
                     Fill = brush,
                     Effect = new DropShadowEffect()
                 };
+      
+                Point point = new Point();
+                point.X = Lat;  
+                point.Y = Lng;
+                IEnumerable<PointLatLng> points = new List<PointLatLng>()
+                {
+                    new PointLatLng(point.X, point.Y),
+                    new PointLatLng(39.97894114439201, 32.736123288931964),
+                    new PointLatLng(39.978514093293235, 32.73639066391127),
+                    new PointLatLng(39.97855188020591, 32.736826883789156),
+                    //new PointLatLng(39.93547475673178, 32.81945932221276),
+                   // new PointLatLng(40.93547475673178, 32.81945932221276),
+                };
+    
+                GMapPolygon poly = new GMapPolygon(points);
+                GMapRoute route = new GMapRoute(points);
+                GMapImage gMapImage = new GMapImage();
+                Map.Markers.Add(route);
+                Map.Markers.Add(poly);
                 Map.Markers.Add(gMapMarker);
                 SetPosition();
             }
@@ -147,9 +169,6 @@ namespace HERA.UI.MAP
         public void SetMapProvider(GMapProvider gMapProvider)
         {
             Map.MapProvider = gMapProvider;
-            Console.WriteLine(Map.MapProvider.Copyright);
-            Console.WriteLine(Map.MapProvider.Name);
-            Console.WriteLine(Map.MapProvider.Id);
         }
     }
 }

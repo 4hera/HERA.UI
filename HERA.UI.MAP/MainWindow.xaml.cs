@@ -36,9 +36,10 @@ namespace HERA.UI.MAP
             mapUserControl = new MapUserControl();
             
             MainMapDock.Children.Add(mapUserControl);
-            foreach (GMapProvider prov in GMapProviders.List)
+               
+            foreach (var prov in MapProviders.Maps)
             {
-                ProviderComboBox.Items.Add(prov.Name);
+                ProviderComboBox.Items.Add(prov.Key);
             }
         }
         public void StartDiscoverServer()
@@ -147,17 +148,18 @@ namespace HERA.UI.MAP
         private void ProviderComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            foreach (GMapProvider pr in GMapProviders.List)
+            /*foreach (GMapProvider pr in GMapProviders.List)
             {
                 if (pr.Name == ProviderComboBox.SelectedItem.ToString())
                 {
                     mapUserControl.SetMapProvider(pr);
                 }
-            }
+            }*/
 
 
+            GMapProvider map = MapProviders.Maps[ProviderComboBox.SelectedItem.ToString()];
 
-
+            mapUserControl.SetMapProvider(map);
 
 
 

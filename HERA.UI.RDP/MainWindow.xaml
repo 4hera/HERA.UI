@@ -18,14 +18,58 @@
             <Button Content="Connect" Margin="0,0,10,0" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="32" Width="111" Click="Button_Click"/>
             <Button Content="Disconnect" Margin="0,0,20,0" HorizontalAlignment="Left"   VerticalAlignment="Center" Height="32" Width="127" Click="Button_Click_1"/>
             <Label Content="Port" HorizontalAlignment="Left" VerticalAlignment="Center" Width="58" FontSize="16"/>
-            <TextBox x:Name="PortText" Margin="0,0,20,0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="166" Height="28" Background="#FFF1EBEB" FontSize="16"/>
+            <TextBox x:Name="PortText" Margin="0,0,20,0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="3389" VerticalAlignment="Center" Width="166" Height="28" Background="#FFF1EBEB" FontSize="16"/>
             <Button x:Name="SetPortButton" Content="Set Port" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="32" Width="110" Click="SetPortButton_Click"/>
         </DockPanel>
-
-        <DockPanel  Margin="5" VerticalAlignment="Center" HorizontalAlignment="Left" LastChildFill="True" Width="1920" Height="768" >
+        <DockPanel Margin="0,45,0,0" VerticalAlignment="Top" LastChildFill="False" Height="45">
+            <Label Content="Desktop Width" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120" FontSize="16"/>
+            <TextBox x:Name="DesktopWidthText" Margin="0,0,20,0" DockPanel.Dock="Left" HorizontalAlignment="Left" TextWrapping="Wrap" Text="1200" VerticalAlignment="Center" Width="45" Height="28" Background="#FFF1EBEB" FontSize="16"/>
+            <Label Content="Desktop Height" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120" FontSize="16"/>
+            <TextBox x:Name="DesktopHeightText" Margin="0,0,20,0" DockPanel.Dock="Left" HorizontalAlignment="Left" TextWrapping="Wrap" Text="768" VerticalAlignment="Center" Width="45" Height="28" Background="#FFF1EBEB" FontSize="16"/>
+            <Button x:Name="SetSizeButton" Margin="0,0,20,0" Width="90" Height="30" Content="Set Size" Click="SetSizeButton_Click"></Button>
+            <Label Content="Authentication Level" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="160" FontSize="16"/>
+            <ComboBox x:Name="AuthenticationLevelComboBox" Width="40" Height="30" SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBoxItem Content="0"></ComboBoxItem>
+                <ComboBoxItem Content="1"></ComboBoxItem>
+                <ComboBoxItem Content="2"></ComboBoxItem>
+            </ComboBox>
+            <Label Content="Enable Ssp Support" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="150" FontSize="16"/>
+            <ComboBox x:Name="EnableSspSupportComboBox"  Width="90" Height="30" SelectionChanged="EnableSspSupportComboBox_SelectionChanged">
+                <ComboBoxItem Content="False"></ComboBoxItem>
+                <ComboBoxItem Content="True"></ComboBoxItem>
+            </ComboBox>
+            <Label Content="Redirect Printers" Width="130" Height="30" FontSize="16"/>
+            <ComboBox x:Name="RedirectPrintersComboBox"  Width="90" Height="30" SelectionChanged="RedirectPrintersComboBox_SelectionChanged">
+                <ComboBoxItem Content="False"></ComboBoxItem>
+                <ComboBoxItem Content="True"></ComboBoxItem>
+            </ComboBox>
+            <Label Content="Redirect Smart Cards" Width="160" Height="30" FontSize="16"/>
+            <ComboBox x:Name="RedirectSmartCardComboBox" Width="90" Height="30" SelectionChanged="RedirectSmartCardComboBox_SelectionChanged">
+                <ComboBoxItem Content="False"></ComboBoxItem>
+                <ComboBoxItem Content="True"></ComboBoxItem>
+            </ComboBox>
+            <Label Content="Redirect Drives" Width="120" Height="30" FontSize="16"/>
+            <ComboBox x:Name="RedirectDrivesComboBox" Width="90" Height="30" SelectionChanged="RedirectDrivesComboBox_SelectionChanged">
+                <ComboBoxItem Content="False"></ComboBoxItem>
+                <ComboBoxItem Content="True"></ComboBoxItem>
+            </ComboBox>
+            <Label Content="Color Depth" Width="100" Height="30" FontSize="16"/>
+            <ComboBox x:Name="ColorDepthComboBox" Width="90" Height="30" SelectionChanged="ColorDepthComboBox_SelectionChanged">
+                <ComboBoxItem Content="8"></ComboBoxItem>
+                <ComboBoxItem Content="15"></ComboBoxItem>
+                <ComboBoxItem Content="16"></ComboBoxItem>
+                <ComboBoxItem Content="24"></ComboBoxItem>
+            </ComboBox>
+        </DockPanel>
+        <DockPanel Margin="0,90,0,0" VerticalAlignment="Top" LastChildFill="False" Height="45">
+            <Ellipse x:Name="StatusColor" Margin="20,0,0,0" Fill="Gray" Width="20" Height="20"></Ellipse>
+            <Label x:Name="StatusText" Width="120" Height="30" FontSize="16" Content="Status"></Label>
+        </DockPanel>
+        <DockPanel  Margin="5,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Left" LastChildFill="True" Width="1920" Height="768" >
             <WindowsFormsHost x:Name="MyForm" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1200" Height="768" />
             <RichTextBox x:Name="ConsoleText"  Height="768" Width="662"/>
         </DockPanel>
+
 
 
 

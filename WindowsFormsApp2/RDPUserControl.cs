@@ -143,7 +143,6 @@ namespace WindowsFormsApp2
             rdp.AdvancedSettings9.RedirectDrives = RedirectDrives;
             rdp.AdvancedSettings9.RDPPort = RDPPort; // +
             rdp.ColorDepth = ColorDepth; // +
-           rdp.AdvancedSettings9.re
             rdp.OnConnecting += rdp_OnConnecting;
             rdp.OnConnected += rdp_OnConnected;
             rdp.OnDisconnected += rdp_OnDisconnected;

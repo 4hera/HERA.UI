@@ -32,7 +32,7 @@ namespace HERA.UI.MAP
         public int MarkerHeight = 40;
         public string MarkerColor = "#32a852";
         GMapMarker gMapMarker;
-    
+        MapSearchService mapSearchService = new MapSearchService();
 
         public MapUserControl()
         {
@@ -62,15 +62,11 @@ namespace HERA.UI.MAP
             PointLatLng pointLatLng = new PointLatLng(Lat, Lng);
             gMapMarker = new GMapMarker(pointLatLng);
             SetMarker();
-            GeoCoderStatusCode status;
-            GMapProviders.GoogleMap.ApiKey = "";
-            var pos = GMapProviders.GoogleTerrainMap.GetPoint("Ostim Teknopark Turuncu Bina", out status);
-            if (pos != null && status == GeoCoderStatusCode.OK)
-            {
-                Console.WriteLine(status);
-                Console.WriteLine(pos.Value);
-            }
-           
+
+
+            //GMapProviders.GoogleMap.ApiKey = "AIzaSyBTS1GZrKmMTskKuPv2tVbFCuPwIu5cEV4";
+            mapSearchService.ApiKey = "AIzaSyBTS1GZrKmMTskKuPv2tVbFCuPwIu5cEV4";
+           SetMapProvider(GMapProviders.GoogleMap);
 
             
         }
@@ -146,6 +142,26 @@ namespace HERA.UI.MAP
             {
                 Console.WriteLine("Error: " + ex.Message);
             }
+        }
+
+        public void SearchLocation(string text)
+        {
+            /*GeoCoderStatusCode status;
+            var pos = GMapProviders.GoogleMap.GetPoint(text, out status);
+            Console.WriteLine(status);
+            Console.WriteLine(pos);
+
+            //Console.WriteLine("point" + points);
+            if (pos != null && status == GeoCoderStatusCode.OK)
+            {
+                SetLat(pos.Value.Lat);
+                SetLng(pos.Value.Lng);
+            }*/
+            
+            PointLatLng? latLng = mapSearchService.SearchLocation(text);
+            SetLat(latLng.Value.Lat);
+            SetLng(latLng.Value.Lng);
+  
         }
 
         public void SetMarkerWidth(int width)

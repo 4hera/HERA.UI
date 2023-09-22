@@ -35,6 +35,7 @@
         </Slider>
         <TextBox x:Name="HexColor" HorizontalAlignment="Left" Margin="6,258,0,0" TextWrapping="Wrap" Text="Hex" VerticalAlignment="Top" Width="120"  KeyDown="OnKeyDownHandler"/>
         <ComboBox x:Name="ProviderComboBox" HorizontalAlignment="Left" Margin="6,294,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ProviderComboBox_SelectionChanged"/>
+        <TextBox x:Name="SearchTextBox" HorizontalAlignment="Left" Margin="6,331,0,0" TextWrapping="Wrap" Text="Newyork" VerticalAlignment="Top" Width="120" KeyDown="SearchTextBox_KeyDown"/>
 
     </Grid>
 </Window>

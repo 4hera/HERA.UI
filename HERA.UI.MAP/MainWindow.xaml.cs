@@ -166,5 +166,13 @@ namespace HERA.UI.MAP
 
 
         }
+
+        private void SearchTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                mapUserControl.SearchLocation(SearchTextBox.Text);
+            }
+        }
     }
 }

@@ -18,7 +18,6 @@ The `ChromeUserControl` represents a custom user control containing a Chromium-b
 - [License](#license)
 
 
-
 # Initial Setup
 
 Before using the `ChromeUserControl` class, make sure that the `CefSharp` library is installed, and Chromium browser settings are configured.
@@ -30,7 +29,7 @@ using CefSharp.Wpf;
 
 # Usage
 
-To initialize the control, create an instance of the ChromeUserControl and call its primary function:
+To initialize the control, create an instance of the ChromeUserControl:
 
 ```csharp
 ChromeUserControl chromeControl = new ChromeUserControl();
@@ -52,7 +51,7 @@ chromeControl.SetZoom(1.5); // Zoom in by 1.5x
 ```
 
 
-### GetZoom(double zoom)
+### GetZoom()
 Retrieves the current zoom level.
 
 ```csharp
@@ -67,7 +66,7 @@ Used to scroll to specific coordinates on the page.
 chromeControl.SetLocation(100, 200);
 ```
 
-### GetLocation(int x, int y)
+### GetLocation()
 Retrieves the current page scroll position.
 
 ```csharp

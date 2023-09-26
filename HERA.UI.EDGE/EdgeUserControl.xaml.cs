@@ -95,6 +95,11 @@ namespace HERA.UI.EDGE
             EdgeWebView.ZoomFactor = zoom;
             
         }
+
+        public double GetZoom()
+        {
+            return EdgeWebView.ZoomFactor;
+        }
         
         public void SetLocation(int x , int y)
         {

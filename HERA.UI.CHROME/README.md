@@ -2,6 +2,23 @@
 
 The `ChromeUserControl` represents a custom user control containing a Chromium-based web browser. When using this control, the following functions and properties are provided:
 
+- [Initial Setup](#initial-setup)
+- [Usage](#usage)
+  - [Basic Functions](#basic-functions)
+    - [SetAdress(string address)](#setaddressstring-adress)
+    - [SetZoom(double zoom)](#setzoomdouble-zoom)
+    - [GetZoom(double zoom)](#getzoomdouble-zoom)
+    - [SetLocation(int x, int y)](#setlocationint-x-int-y)
+    - [GetLocation(int x, int y)](#getlocationint-x-int-y)
+    - [HideScroll(bool isHide)](#hidescrollbool-ishide)
+    - [SetCropEnable(bool isEnable)](#setcropenablebool-isenable)
+    - [Crop(int x, int y, double z, double sx, double sy, int sl, int st)](#cropint-x-int-y-double-z-double-sx-double-sy-int-sl-int-st)
+    - [GoBack() and GoForward()](#goback-and-goforward)
+    - [SetNewWindowEnable(bool isEnable)](#setnewwindowenablebool-isenable)
+- [License](#license)
+
+
+
 # Initial Setup
 
 Before using the `ChromeUserControl` class, make sure that the `CefSharp` library is installed, and Chromium browser settings are configured.

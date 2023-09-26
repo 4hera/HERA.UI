@@ -80,7 +80,7 @@ namespace HERA.UI.CHROME
        
         public void ChromeSetAdress(string adress)
         {
-            chromeUserControl.SetAdress(adress);
+            chromeUserControl.SetAddress(adress);
         }
 
         public void ChromeSetZoom(double zoom)

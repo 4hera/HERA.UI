@@ -33,10 +33,4 @@
     <ProjectReference Include="..\WindowsFormsApp2\RDPUserControl.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="AxInterop.MSTSCLib">
-      <HintPath>..\..\..\..\Desktop\AxInterop.MSTSCLib.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

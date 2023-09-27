@@ -10,9 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp2
+namespace RDPUserControl
 {
-    public partial class RDPUserControl : UserControl
+    public partial class RDPUC : UserControl
     {
         public enum DisconnectReason : int
         {
@@ -131,7 +131,7 @@ namespace WindowsFormsApp2
         public bool RedirectPrinters  = false;
         public bool RedirectSmartCards = false;
         public Status status = Status.Default;
-        public RDPUserControl()
+        public RDPUC()
         {
             InitializeComponent();
             rdp.DesktopHeight = DesktopHeight; // +

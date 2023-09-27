@@ -65,8 +65,57 @@ namespace HERA.UI.EDGE
                 }); ;
             }
         }
+        private const string YoutubeLinkRegex = "(?:.+?)?(?:\\/v\\/|watch\\/|\\?v=|\\&v=|youtu\\.be\\/|\\/v=|^youtu\\.be\\/)([a-zA-Z0-9_-]{11})+";
+        private static Regex regexExtractId = new Regex(YoutubeLinkRegex, RegexOptions.Compiled);
+        private static string[] validAuthorities = { "youtube.com", "www.youtube.com", "youtu.be", "www.youtu.be" };
+
+        public string ExtractVideoIdFromUri(Uri uri)
+        {
+            try
+            {
+                string authority = new UriBuilder(uri).Uri.Authority.ToLower();
+
+                //check if the url is a youtube url
+                if (validAuthorities.Contains(authority))
+                {
+                    //and extract the id
+                    var regRes = regexExtractId.Match(uri.ToString());
+                    if (regRes.Success)
+                    {
+                        return regRes.Groups[1].Value;
+                    }
+                }
+            }
+            catch { }
 
 
+            return null;
+        }
+        public void MakeYoutubeLink(ref string link)
+        {
+            //g3bCNztipPQ
+            StringBuilder youtube = new StringBuilder();
+            youtube.Append("https://www.youtube.com/embed/");
+            youtube.Append(link);
+            youtube.Append("?autoplay=1&mute=1&version=3&loop=1&playlist=");
+            youtube.Append(link);
+            link = youtube.ToString();
+        }
+        private void GoYoutubeButtonClick(object sender, RoutedEventArgs e)
+        {
+            Uri uri = new Uri(LinkText.Text);
+            string youtubeId= ExtractVideoIdFromUri(uri);
+            MakeYoutubeLink(ref youtubeId);
+            if (OnEvent is not null)
+            {
+                OnEvent(this, new()
+                {
+                    State = "OpenLink",
+                    Source = new Uri(youtubeId)
+                }); ;
+            }
+        }
+        
         private void LinkComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SetUrl();
@@ -258,6 +307,5 @@ namespace HERA.UI.EDGE
                 });
             }
         }
-    }
     }
 }

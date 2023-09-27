@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RPDUserControl\RDPUserControl.csproj" />
     <ProjectReference Include="..\WindowsFormsApp2\RDPUserControl.csproj" />
   </ItemGroup>
 

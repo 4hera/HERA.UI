@@ -48,7 +48,7 @@ namespace HERA.UI.CHROME
             {
                 OnEvent(this, new()
                 {
-                    State = "OpenAdress",
+                    State = "SetAddress",
                     Adress = AdressText.Text
                 }); ;
             }
@@ -62,7 +62,7 @@ namespace HERA.UI.CHROME
             {
                 OnEvent(this, new()
                 {
-                    State = "SetAdress",
+                    State = "SetAddress",
                     Adress = LinkComboBox.SelectedItem.ToString()
                 }); ;
             }

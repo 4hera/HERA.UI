@@ -39,8 +39,8 @@ namespace HERA.UI.CHROME
             {
                 switch (chromeEvent.State)
                 {
-                    case "SetAdress":
-                        ChromeSetAdress(chromeEvent.Adress);
+                    case "SetAddress":
+                        ChromeSetAddress(chromeEvent.Adress);
                         break;
                     case "SetZoom":
                         ChromeSetZoom(chromeEvent.Zoom);
@@ -78,7 +78,7 @@ namespace HERA.UI.CHROME
         }
 
        
-        public void ChromeSetAdress(string adress)
+        public void ChromeSetAddress(string adress)
         {
             chromeUserControl.SetAddress(adress);
         }

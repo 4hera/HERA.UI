@@ -1,13 +1,8 @@
-﻿using MSTSCLib;
-
+﻿
 using System.Windows;
-using System.Windows.Forms.Integration;
-
-using Microsoft.VisualBasic.ApplicationServices;
 using System;
-using WindowsFormsApp2;
-using System.Diagnostics;
 using System.Windows.Controls;
+using RDPUserControl;
 
 namespace HERA.UI.RDP
 {
@@ -16,7 +11,7 @@ namespace HERA.UI.RDP
     /// </summary>
     public partial class MainWindow : Window
     {
-       RDPUserControl userControl = new RDPUserControl();
+        RDPUC userControl = new RDPUC();
         Status Status = new Status();
         public MainWindow()
         {

@@ -1,15 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\PDFUserControl\PDFUserControl.csproj" />
-  </ItemGroup>
-
+	<ItemGroup>
+		<PackageReference Include="NSystem.Data.MoonPdf.Wpf" Version="2023.1.1" />
+	</ItemGroup>
 </Project>

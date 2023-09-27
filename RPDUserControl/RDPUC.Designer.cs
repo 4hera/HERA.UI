@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsApp2
+﻿namespace RDPUserControl
 {
-    partial class RDPUserControl
+    partial class RDPUC
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RDPUserControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RDPUC));
             this.rdp = new AxMSTSCLib.AxMsRdpClient8NotSafeForScripting();
             ((System.ComponentModel.ISupportInitialize)(this.rdp)).BeginInit();
             this.SuspendLayout();

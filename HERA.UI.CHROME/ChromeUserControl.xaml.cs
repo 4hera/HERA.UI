@@ -70,7 +70,7 @@ namespace HERA.UI.CHROME
 
         }
 
-        public void SetAdress(string adress)
+        public void SetAddress(string adress)
         {
             chromiumWebBrowser.Address = adress;
         }

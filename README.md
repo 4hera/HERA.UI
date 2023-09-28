@@ -8,7 +8,7 @@ This project aims to provide a set of reusable and customizable user controls, e
 
 - [HERA.UI.CHROME](./HERA.UI.CHROME/README.md): A user control for embedding a Chromium-based web browser into your application.
 - [HERA.UI.EDGE](./HERA.UI.EDGE/README.md): A user control for embedding the Microsoft Edge web browser into your application.
-- [HERA.UI.RDP](./HERA.UI.RDP/README.md): A user control for remote desktop protocol (RDP) functionality.
+- [HERA.UI.RDP](./HERA.UI.RDPUserControl/README.md): A user control for remote desktop protocol (RDP) functionality.
 - [HERA.UI.VLC](./HERA.UI.VLC/README.md): A user control for playing multimedia content using the VLC media player.
 - [HERA.UI.PDF](./HERA.UI.PDF/README.md): A user control for viewing and interacting with PDF documents.
 - [HERA.UI.MAP](./HERA.UI.MAP/README.md): A user control for displaying maps powered by GMap.NET.

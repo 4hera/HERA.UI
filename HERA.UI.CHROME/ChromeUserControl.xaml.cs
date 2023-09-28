@@ -70,9 +70,9 @@ namespace HERA.UI.CHROME
 
         }
 
-        public void SetAddress(string adress)
+        public void SetAddress(string address)
         {
-            chromiumWebBrowser.Address = adress;
+            chromiumWebBrowser.Address = address;
         }
 
         public void SetZoom(double zoom)

@@ -169,7 +169,7 @@ namespace HERA.UI.VLC
             }
         }
 
-        public bool isMuted()
+        public bool IsMuted()
         {
             if (_mediaPlayer is not null)
             {

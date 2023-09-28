@@ -11,7 +11,7 @@ The VLCUserControl is a custom user control for playing video using the LibVLCSh
     - [`Stop()`](#stop)
     - [`SetVolume(int volume)`](#setvolumeint-volume)
     - [`Mute()`](#mute)
-    - [`isMuted()`](#ismuted)
+    - [`IsMuted()`](#Ismuted)
   - [Video Options](#video-options)
     - [`SetBrightness(float brightness)`](#setbrightnessfloat-brightness)
     - [`GetBrightness()`](#getbrightness)
@@ -110,11 +110,11 @@ Toggles the mute state of the video.
 vlcControl.Mute();
 ```
 
-### isMuted()
+### IsMuted()
 Checks if the video is currently muted.
 
 ```csharp
-bool muted = vlcControl.isMuted();
+bool muted = vlcControl.IsMuted();
 ```
 
 ## Video Options

@@ -5,7 +5,7 @@ The `ChromeUserControl` represents a custom user control containing a Chromium-b
 - [Initial Setup](#initial-setup)
 - [Usage](#usage)
   - [Basic Functions](#basic-functions)
-    - [SetAdress(string address)](#setaddressstring-adress)
+    - [SetAddress(string address)](#setaddressstring-adress)
     - [SetZoom(double zoom)](#setzoomdouble-zoom)
     - [GetZoom(double zoom)](#getzoomdouble-zoom)
     - [SetLocation(int x, int y)](#setlocationint-x-int-y)
@@ -36,7 +36,7 @@ ChromeUserControl chromeControl = new ChromeUserControl();
 ```
 ## Basic Functions
 
-### SetAdress(string adress)
+### SetAddress(string address)
 Used to navigate to the specified URL.
 
 ```csharp

@@ -120,6 +120,7 @@ namespace HERA.UI.PDF
         public void SetViewType(System.Data.MoonPdf.Wpf.ViewType viewType)
         {
             moonPdfPanel.ViewType = viewType;
+            
         }
 
         private void moonPdfPanel_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
